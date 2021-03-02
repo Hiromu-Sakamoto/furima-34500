@@ -1,24 +1,60 @@
-# README
+# furimaのER図
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Column           | Type   | Options     |
+| ---------------- | ------ | ----------- |
+| email            | string | null: false |
+| password         | string | null: false |
+| nickname         |  text  | null: false |
+| family_name      |  text  | null: false |
+| first_name       |  text  | null: false |
+| family_name_kana |  text  | null: false |
+| first_name_kana  |  text  | null: false |
+| birth_day        |  text  | null: false |
 
-* Ruby version
+### Association
 
-* System dependencies
+- has_many :items dependent: :destroy
 
-* Configuration
+## sipping_infomation テーブル
 
-* Database creation
+| Column          | Type       | Options                        |
+| --------------- | ---------- | ------------------------------ |
+| user_id         | integer    | null: false, foreign_key: true |
+| card number     | text       | null: false                    |
+| expiration_date | text       | null: false                    |
+| security code   | text       | null: false                    |
+| postal code     | text       | null: false                    |
+| prefecture      | text       | null: false                    |
+| municipalitie   | text       | null: false                    |
+| address         | text       | null: false                    |
+| Building name   | text       | null: true                     |
+| phone number    | references | null: false, foreign_key: true |
 
-* Database initialization
+### Association
 
-* How to run the test suite
+- belongs_to :user
+- belongs_to :item
 
-* Services (job queues, cache servers, search engines, etc.)
+## items テーブル
 
-* Deployment instructions
+| Column         | Type       | Options                        |
+| -------------- | ---------- | ------------------------------ |
+| name           | string     | null: false                    |
+| price          | text       | null: false                    |
+| fee            | text       | null: false                    |
+| profit         |            | ActiveStorageで実施             |
+| seller         | references | null: false, foreign_key: true |
+| category       | text       | null: false                    |
+| condition      | text       | null: false                    |
+| charges        | text       | null: false                    |
+| delivery area  | text       | null: false                    |
+| Estimated date | text       | null: false                    |
+| image          |            | ActiveStorageで実施             |
+| user           | references | null: false, foreign_key: true |
+### Association
 
-* ...
+- belongs_to :user
+- has_one :account
+
