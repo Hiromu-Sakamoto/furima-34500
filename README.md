@@ -23,9 +23,9 @@
 
 | Column          | Type       | Options                        |
 | --------------- | ---------- | ------------------------------ |
-| card_number     | integer    | null: false                    |
+| card_number     | integer    | unique: true                   |
 | expiration_date | date       | null: false                    |
-| security_code   | integer    | null: false                    |
+| security_code   | integer    | unique: true                   |
 | user_id         | references | null: false, foreign_key: true |
 
 ### Association
