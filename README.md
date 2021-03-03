@@ -41,6 +41,7 @@
 | address       | string     | null: false                    |
 | building_name | string     |                                |
 | phone_number  | string     | null: false                    |
+| order_id      | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -59,7 +60,6 @@
 | prefecture_id     | integer    | null: false                    |
 | estimated_date_id | integer    | null: false                    |
 | user              | references | null: false, foreign_key: true |
-| order             | references | null: false, foreign_key: true |
 
 ### Association
 
