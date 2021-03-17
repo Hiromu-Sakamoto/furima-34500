@@ -42,11 +42,8 @@ class OrdersController < ApplicationController
 
   def user_confirmation
     set_item
-    if current_user == @item.user
+    if current_user == @item.user || @item.order.present?
       redirect_to item_path(@item)
-    end
-    if @item.order.present?
-    redirect_to item_path(@item)
     end
   end
 end

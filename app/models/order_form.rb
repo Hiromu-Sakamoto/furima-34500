@@ -1,6 +1,6 @@
 class OrderForm
   include ActiveModel::Model
-  attr_accessor :postal_code, :prefecture_id, :city, :address, :building_name, :phone_number, :order, :user_id, :item_id, :token
+  attr_accessor :postal_code, :prefecture_id, :city, :address, :building_name, :phone_number, :user_id, :item_id, :token
 
   # ここにバリデーションの処理を書く
   with_options presence: true do
