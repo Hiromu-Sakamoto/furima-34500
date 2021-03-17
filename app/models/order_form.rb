@@ -9,6 +9,8 @@ class OrderForm
     validates :city
     validates :address
     validates :phone_number, format: { with: /\A\d{10}\z|\A\d{11}\z/, message: 'not entered correctly' }
+    validates :user_id
+    validates :item_id
     validates :token
   end
 
