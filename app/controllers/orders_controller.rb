@@ -1,7 +1,8 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:index,:create]
-  before_action :user_confirmation, only: [:index,:create]
   before_action :set_item, only: [:index,:create]
+  before_action :user_confirmation, only: [:index,:create]
+
 
   def index
     @orderform = OrderForm.new
@@ -14,7 +15,6 @@ class OrdersController < ApplicationController
       @orderform.save
       redirect_to root_path
     else
-      @item = Item.find(params[:item_id])
       render 'orders/index'
     end
   end
@@ -41,7 +41,6 @@ class OrdersController < ApplicationController
   end
 
   def user_confirmation
-    set_item
     if current_user == @item.user || @item.order.present?
       redirect_to item_path(@item)
     end
