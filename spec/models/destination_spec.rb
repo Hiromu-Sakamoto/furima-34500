@@ -50,8 +50,13 @@ RSpec.describe Destination, type: :model do
         @order_form.valid?
         expect(@order_form.errors.full_messages).to include("Phone number can't be blank")
       end
-      it 'phone_numberが10文字以下では保存できないこと' do
+      it 'phone_numberが9文字以下では保存できないこと' do
         @order_form.phone_number = '12345'
+        @order_form.valid?
+        expect(@order_form.errors.full_messages).to include('Phone number not entered correctly')
+      end
+      it 'phone_numberが12文字以上では保存できないこと' do
+        @order_form.phone_number = '123456789012'
         @order_form.valid?
         expect(@order_form.errors.full_messages).to include('Phone number not entered correctly')
       end
